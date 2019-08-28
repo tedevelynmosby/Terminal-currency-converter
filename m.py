@@ -23,8 +23,3 @@ response = requests.request("GET", url, headers=headers, params=querystring)
 jsonresp = json.loads(response.text)
 arguements = sys.argv[1]
 print(jsonresp["rates"]["INR"] * float(arguements))
-
-# response = requests.request("GET", url, headers=headers, params=querystring)
-# arguements = sys.argv[1]
-# jresp = json.loads(response.text)
-# print(jresp["USD_INR"] * float(arguements))
