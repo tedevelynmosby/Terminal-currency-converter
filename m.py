@@ -3,8 +3,11 @@ import json
 import sys
 
 url = "https://api.ratesapi.io/api/latest"
+baseCurrency = sys.argv[2].upper()
+convertCurrency = sys.argv[3].upper()
 
-querystring = {"base":"AUD"}
+
+querystring = {"base":baseCurrency.upper()}
 
 headers = {
     'Authorization': "Basic Og==",
@@ -22,4 +25,4 @@ headers = {
 response = requests.request("GET", url, headers=headers, params=querystring)
 jsonresp = json.loads(response.text)
 arguements = sys.argv[1]
-print(jsonresp["rates"]["INR"] * float(arguements))
+print(jsonresp["rates"][convertCurrency] * float(arguements))
