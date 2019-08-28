@@ -2,24 +2,29 @@ import requests
 import json
 import sys
 
-url = "https://free.currconv.com/api/v7/convert"
+url = "https://api.ratesapi.io/api/latest"
 
-querystring = {"q":"USD_INR","compact":"ultra","apiKey":"290c9c851dc7c10c7e40"}
+querystring = {"base":"AUD"}
 
 headers = {
     'Authorization': "Basic Og==",
     'User-Agent': "PostmanRuntime/7.15.2",
     'Accept': "*/*",
     'Cache-Control': "no-cache",
-    'Postman-Token': "ccd70a1f-c0d4-4b80-8343-26accd1199a0,69d5a5d6-9e40-47af-bf4b-d6351c064bde",
-    'Host': "free.currconv.com",
-    'Cookie': "__cfduid=da34e8e562f237f9222a02b5c0f14affb1565585170",
+    'Postman-Token': "5a572626-e43b-4b65-9c61-933a6ef5ec59,31503acb-0844-44c3-9032-07cd3af9d757",
+    'Host': "api.ratesapi.io",
+    'Cookie': "__cfduid=d61a954e1902fdfe687f83565526959971566986551",
     'Accept-Encoding': "gzip, deflate",
     'Connection': "keep-alive",
     'cache-control': "no-cache"
     }
 
 response = requests.request("GET", url, headers=headers, params=querystring)
+jsonresp = json.loads(response.text)
 arguements = sys.argv[1]
-jresp = json.loads(response.text)
-print(jresp["USD_INR"] * float(arguements))
+print(jsonresp["rates"]["INR"] * float(arguements))
+
+# response = requests.request("GET", url, headers=headers, params=querystring)
+# arguements = sys.argv[1]
+# jresp = json.loads(response.text)
+# print(jresp["USD_INR"] * float(arguements))
