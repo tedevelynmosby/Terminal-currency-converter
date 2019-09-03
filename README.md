@@ -19,11 +19,11 @@ python m.py valueOfCurrency BaseCurrency ResultantCurrency
 Example:
 
 ```
-python m.py 20 usd to INR
+python m.py 20 usd inr
 ```
 
 ```
-python m.py 19 AUD to EUR
+python m.py 19 AUD EUR
 ```
 ## Installation
 
